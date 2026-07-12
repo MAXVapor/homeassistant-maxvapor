@@ -48,6 +48,21 @@ directory and restart.
 
 All devices linked to your account appear automatically.
 
+## Apple Home and Google Home
+
+This integration is also the recommended way to get your device into the
+Apple Home app: enable Home Assistant's built-in
+[HomeKit Bridge](https://www.home-assistant.io/integrations/homekit/)
+integration and expose the MaxVapor climate entity. Your iPhone will show
+a one-time "uncertified accessory" notice when pairing the bridge, and
+from then on the device appears in the Home app with temperature control
+and Siri support. Google Home works the same way through Home Assistant's
+Google Assistant integration.
+
+If you were using the standalone Homebridge plugin, this path replaces it:
+one integration to install instead of two, and the HomeKit side is
+maintained by the Home Assistant project.
+
 ## Automation ideas
 
 ```yaml
