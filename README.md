@@ -41,8 +41,9 @@ directory and restart.
 ## Setup
 
 1. Sign in at [dashboard.maxvapor.com](https://dashboard.maxvapor.com),
-   open a device, choose View Data Logs, and generate a token under
-   **Access tokens**.
+   open **API Keys** in the sidebar, and create a key (name it
+   "Home Assistant"; you can pin it to your home IP if you like). Copy the
+   key when it's shown; it's only displayed once.
 2. In Home Assistant: Settings, then Devices and Services, then
    **Add Integration**, search for "MaxVapor", and paste the token.
 
