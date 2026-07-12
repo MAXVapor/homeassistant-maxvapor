@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your MaxVapor account",
+        "description": "Paste an API token from your MaxVapor dashboard. Generate one under Access tokens on a device's Data Logs page at dashboard.maxvapor.com.",
+        "data": {
+          "api_token": "API token"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "The dashboard rejected that token. Copy it again from the Data Logs page.",
+      "cannot_connect": "Could not reach dashboard.maxvapor.com. Check your connection and try again."
+    },
+    "abort": {
+      "already_configured": "Your MaxVapor account is already set up."
+    }
+  }
+}
