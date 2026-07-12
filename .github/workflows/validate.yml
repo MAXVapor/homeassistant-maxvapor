@@ -18,6 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hacs/action@main
+        env:
+          # Needed while the repo is private: the action fetches hacs.json
+          # and manifest.json over the GitHub API, which 404s without auth.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           category: integration
           # brands listing is only required for the default HACS store;
