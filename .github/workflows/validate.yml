@@ -18,12 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hacs/action@main
-        env:
-          # Needed while the repo is private: the action fetches hacs.json
-          # and manifest.json over the GitHub API, which 404s without auth.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           category: integration
-          # brands listing is only required for the default HACS store;
-          # this repo installs as a custom repository.
-          ignore: brands
+          # brands: only required for the default HACS store; this repo
+          # installs as a custom repository.
+          # hacsjson + integration_manifest: false failures while the repo
+          # is PRIVATE (the action reads file contents from
+          # raw.githubusercontent.com, which 404s unauthenticated; the
+          # contents are schema-valid). REMOVE both ignores when the repo
+          # goes public at release.
+          ignore: brands hacsjson integration_manifest
