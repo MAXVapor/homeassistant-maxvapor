@@ -45,7 +45,9 @@ class MaxVaporTemperatureSensor(MaxVaporEntity, SensorEntity):
 class MaxVaporAutoOffSensor(MaxVaporEntity, SensorEntity):
     _attr_name = "Auto-off remaining"
     _attr_device_class = SensorDeviceClass.DURATION
-    _attr_native_unit_of_measurement = UnitOfTime.SECONDS
+    # The API reports whole minutes remaining (the firmware publishes the
+    # countdown in minutes).
+    _attr_native_unit_of_measurement = UnitOfTime.MINUTES
 
     def __init__(self, coordinator: MaxVaporCoordinator, serial: str) -> None:
         super().__init__(coordinator, serial)
