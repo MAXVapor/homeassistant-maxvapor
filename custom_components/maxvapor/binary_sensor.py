@@ -1,4 +1,4 @@
-"""Binary sensors: READY, heating, and the coil protection flags."""
+"""Binary sensors: READY, heating, coil connected, and the coil protection flags."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -35,6 +35,18 @@ SENSORS: tuple[MaxVaporBinarySensorDescription, ...] = (
         name="Heating",
         device_class=BinarySensorDeviceClass.HEAT,
         value_fn=lambda state: bool(state.get("pid_state")),
+    ),
+    MaxVaporBinarySensorDescription(
+        key="coil_connected",
+        name="Coil connected",
+        device_class=BinarySensorDeviceClass.CONNECTIVITY,
+        icon="mdi:heating-coil",
+        # tc_fault is the MAX31856 fault byte (the device's tc_error feed).
+        # A faulted reading is not a real temperature, and in practice it
+        # means nothing is plugged into the coil jack; the firmware reports
+        # 0 C in that case. Dashboards that predate the flag omit it, so
+        # treat a missing key as connected.
+        value_fn=lambda state: not state.get("tc_fault"),
     ),
     MaxVaporBinarySensorDescription(
         key="coil_flapping",

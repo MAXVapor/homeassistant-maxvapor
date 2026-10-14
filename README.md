@@ -19,6 +19,10 @@ Each linked device shows up in Home Assistant as one device with:
   light, send a notification.
 - **Coil health sensors**: two problem-class sensors that mirror the
   device's coil protection (repeated faults, suspected coil damage).
+- A **Coil connected** sensor that turns off when nothing is plugged into
+  the coil jack. With no coil the device has no real temperature to report
+  (it reads 0 C / 32 F), so this is the signal to watch, not the
+  thermostat.
 - A **temperature sensor** for history graphs and an **auto-off remaining**
   countdown.
 
@@ -86,5 +90,5 @@ Assistant webhook trigger URL. See the Integrations page on the dashboard.
 
 - Home Assistant 2024.4 or newer
 - A MaxVapor device linked to your dashboard account, running firmware
-  0.2.0 or newer for the coil health sensors (older firmware simply
-  reports them as clear)
+  0.2.0 or newer for the coil health and coil connected sensors (older
+  firmware simply reports them as clear and connected)
